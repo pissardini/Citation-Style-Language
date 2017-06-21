@@ -6,7 +6,7 @@
     <id>http://csl.mendeley.com/styles/20724431/abnt-ep</id>
     <author>
       <name>Rodrigo de Sousa Pissardini</name>
-      <email>pissardini@usp.br</email>
+      <email>pissardini AT usp DOT br</email>
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
