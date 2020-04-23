@@ -10,7 +10,7 @@
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2017-06-21T18:11:14+00:00</updated>
+    <updated>2020-04-23T20:00:00+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
