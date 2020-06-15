@@ -5,6 +5,10 @@ Estilos de citações para uso no Zotero e Mendeley.
 
 * **abnt-ep.cls:** arquivo com o formato ABNT de acordo com os padrões de teses e dissertações da  **Escola Politécnica da Universidade de São Paulo (POLI-USP)**. O formato é *AUTOR, data*; colocando os autores em ordem cronológica. O *et al.* aparece apenas no texto, enquanto na bibliografia aparecem todos os autores. Para utilizar o cls em questão, basta fazer download e arrastar para a área de citações do Mendeley ou Zotero.
 
+## Instalando
+
+* **Mendeley**: Para instalação, faça o download do arquivo cls. No Mendeley, clique nas opções *View > Citation Style > Journal Abbreviations*. Ao abrir a caixa *Citation Styles*, arraste com o mouse o arquivo cls baixado para o conjunto de cls já instalados. Clique depois em *Done*.
+
 ## Colaborando
 
 Se desejar colaborar com alguma citação, basta fazer um *pull request*. Se sua sugestão for adotada, seu nome será integrado ao estilo em questão. 
