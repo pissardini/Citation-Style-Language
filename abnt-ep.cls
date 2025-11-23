@@ -69,13 +69,19 @@
     </choose>
   </macro>
   <macro name="translator">
-    <text value="Traducao "/>
-    <names variable="translator" delimiter="; ">
-      <name delimiter="; " sort-separator=" " delimiter-precedes-last="always">
-        <name-part name="given" text-case="capitalize-first"/>
-        <name-part name="family" text-case="capitalize-first"/>
-      </name>
-    </names>
+    <choose>
+      <if variable="translator">
+        <group delimiter=" ">
+          <text value="Tradução de"/>
+          <names variable="translator" delimiter="; ">
+            <name sort-separator=" " delimiter-precedes-last="always">
+              <name-part name="given" text-case="capitalize-first"/>
+              <name-part name="family" text-case="capitalize-first"/>
+            </name>
+          </names>
+        </group>
+      </if>
+    </choose>
   </macro>
   <macro name="author">
     <names variable="author" font-variant="normal">
@@ -116,7 +122,7 @@
     <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;."/>
     <date variable="accessed" prefix=". Acesso em: " suffix=".">
       <date-part name="day" suffix=" "/>
-      <date-part name="month" form="short" suffix=". " text-case="lowercase"/>
+      <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
       <date-part name="year"/>
     </date>
   </macro>
@@ -175,7 +181,7 @@
         </choose>
       </if>
       <else>
-        <text value="[s.l: s.n.]"/>
+        <text value="[s.l.: s.n.]"/>
       </else>
     </choose>
   </macro>
@@ -405,8 +411,7 @@
             <text macro="issued-year"/>
             <text macro="locators"/>
             <text variable="publisher" prefix=" " suffix=","/>
-            <text variable="publisher-place" prefix=" " suffix=","/>
-            <text macro="issued-year"/>
+            <text variable="publisher-place" prefix=" "/>
             <text macro="access"/>
           </group>
         </else-if>
@@ -454,7 +459,9 @@
             <text macro="locators"/>
             <text macro="event"/>
             <text macro="publisher" prefix=". " suffix=". "/>
-            <text macro="collection-title" prefix="(Texto para discussao, n. " suffix=")."/>
+            <group prefix="(Texto para discussão" suffix=").">
+              <text variable="collection-number" prefix=", n. "/>
+            </group>
             <text macro="access"/>
           </group>
         </else-if>
@@ -464,7 +471,7 @@
             <text macro="title"/>
             <text variable="publisher-place" prefix=". " suffix=": "/>
             <text variable="publisher" suffix=", "/>
-            <text macro="issued" prefix=", " suffix=". (Nota t?cnica)."/>
+            <text macro="issued" prefix=", " suffix=". (Nota técnica)."/>
           </group>
         </else-if>
         <else-if type="paper-conference">
