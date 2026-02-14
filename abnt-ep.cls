@@ -149,15 +149,16 @@
     </choose>
   </macro>
   <macro name="container-title">
-    <choose>
-      <if type="paper-conference" match="any">
-        <text variable="container-title" prefix=" " suffix=", "/>
-      </if>
-      <else>
-        <text variable="container-title" font-weight="bold"/>
-      </else>
-    </choose>
-  </macro>
+  <choose>
+    <if type="paper-conference" match="any">
+      <text variable="container-title" text-case="uppercase" prefix=" " suffix=", "/>
+    </if>
+    <else>
+      <text variable="container-title" font-weight="bold"/>
+    </else>
+  </choose>
+</macro>
+
   <macro name="publisher">
     <choose>
       <if match="any" variable="publisher">
@@ -190,8 +191,15 @@
       <if variable="event">
         <choose>
           <if variable="genre" match="none">
-            <text term="in" text-case="capitalize-first" suffix=": "/>
-            <text variable="event" text-case="uppercase"/>
+<choose>
+  <if type="paper-conference">
+    <text value="In" text-case="capitalize-first" suffix=": "/>
+  </if>
+  <else>
+    <text term="in" text-case="capitalize-first" suffix=": "/>
+  </else>
+</choose>
+<text variable="event" text-case="uppercase"/>
           </if>
           <else>
             <group delimiter=" ">
@@ -479,12 +487,19 @@
           <text macro="title"/>
           <text macro="container-contributors"/>
           <text macro="secondary-contributors"/>
-          <text term="in" text-case="capitalize-first" prefix=" " suffix=": "/>
+	  <text term="in" text-case="capitalize-first" prefix=" " suffix=": "/>
           <text macro="container-title"/>
           <text variable="edition" suffix="., "/>
           <text variable="issue" suffix=", "/>
           <text variable="publisher-place" suffix=". "/>
-          <text value="Anais" font-weight="bold"/>
+	  <choose>
+            <if locale="pt-BR pt pt-PT">
+             <text value="Anais" font-weight="bold"/>
+            </if>
+            <else>
+            <text value="Proceedings" font-weight="bold"/>
+            </else>
+          </choose>
           <text value="..."/>
           <group delimiter=". " prefix=". " suffix=". ">
             <text macro="event"/>
