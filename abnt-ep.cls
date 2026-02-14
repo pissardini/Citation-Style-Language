@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text" demote-non-dropping-particle="never" default-locale="pt-BR">
+  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
     <title>Associação Brasileira de Normas Técnicas- Escola Politécnica da Universidade de São Paulo - R.Pissardini</title>
     <title-short>ABNT-EP</title-short>
-    <id>http://csl.mendeley.com/styles/20724431/abnt-ep</id>
+    <id>http://www.zotero.org/styles/associacao-brasileira-de-normas-tecnicas-escola-politecnica-da-universidade-de-sao-paulo-rpissardini</id>
+    <link rel="self" href="http://www.zotero.org/styles/associacao-brasileira-de-normas-tecnicas-escola-politecnica-da-universidade-de-sao-paulo-rpissardini"/>
     <author>
       <name>Rodrigo Pissardini</name>
       <email>pissardini AT usp DOT br</email>
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2020-04-23T20:00:00+00:00</updated>
+    <updated>2026-02-14T22:37:48+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
@@ -119,12 +121,20 @@
     </names>
   </macro>
   <macro name="access">
-    <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;."/>
-    <date variable="accessed" prefix=". Acesso em: " suffix=".">
-      <date-part name="day" suffix=" "/>
-      <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
-      <date-part name="year"/>
-    </date>
+    <choose>
+      <if type="webpage" match="any">
+        <choose>
+          <if variable="URL">
+            <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;."/>
+            <date variable="accessed" prefix=" Acesso em: " suffix=".">
+              <date-part name="day" suffix=" "/>
+              <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
+              <date-part name="year"/>
+            </date>
+          </if>
+        </choose>
+      </if>
+    </choose>
   </macro>
   <macro name="title">
     <choose>
@@ -149,41 +159,34 @@
     </choose>
   </macro>
   <macro name="container-title">
-  <choose>
-    <if type="paper-conference" match="any">
-      <text variable="container-title" text-case="uppercase" prefix=" " suffix=", "/>
-    </if>
-    <else>
-      <text variable="container-title" font-weight="bold"/>
-    </else>
-  </choose>
-</macro>
-
-  <macro name="publisher">
     <choose>
-      <if match="any" variable="publisher">
-        <choose>
-          <if variable="publisher-place">
-            <text variable="publisher-place" suffix=": "/>
-          </if>
-          <else-if type="entry-encyclopedia"/>
-          <else>
-            <text value="[s.l.] "/>
-          </else>
-        </choose>
-        <choose>
-          <if variable="publisher">
-            <text variable="publisher" suffix=", "/>
-            <text macro="issued"/>
-          </if>
-          <else>
-            <text value="[s.n.]"/>
-          </else>
-        </choose>
+      <if type="paper-conference" match="any">
+        <text variable="container-title" text-case="uppercase" prefix=" " suffix=", "/>
       </if>
       <else>
-        <text value="[s.l.: s.n.]"/>
+        <text variable="container-title" font-weight="bold"/>
       </else>
+    </choose>
+  </macro>
+  <macro name="publisher">
+    <choose>
+      <if variable="publisher" match="any">
+        <group>
+          <choose>
+            <if variable="publisher-place">
+              <text variable="publisher-place" suffix=": "/>
+            </if>
+          </choose>
+          <text variable="publisher" suffix=", "/>
+          <text macro="issued"/>
+        </group>
+      </if>
+      <else-if variable="publisher-place" match="any">
+        <group>
+          <text variable="publisher-place"/>
+          <text macro="issued" prefix=", "/>
+        </group>
+      </else-if>
     </choose>
   </macro>
   <macro name="event">
@@ -191,15 +194,15 @@
       <if variable="event">
         <choose>
           <if variable="genre" match="none">
-<choose>
-  <if type="paper-conference">
-    <text value="In" text-case="capitalize-first" suffix=": "/>
-  </if>
-  <else>
-    <text term="in" text-case="capitalize-first" suffix=": "/>
-  </else>
-</choose>
-<text variable="event" text-case="uppercase"/>
+            <choose>
+              <if type="paper-conference">
+                <text value="In" text-case="capitalize-first" suffix=": "/>
+              </if>
+              <else>
+                <text term="in" text-case="capitalize-first" suffix=": "/>
+              </else>
+            </choose>
+            <text variable="event" text-case="uppercase"/>
           </if>
           <else>
             <group delimiter=" ">
@@ -229,9 +232,6 @@
           </date>
         </group>
       </if>
-      <else>
-        <text value="[s.d.]"/>
-      </else>
     </choose>
   </macro>
   <macro name="issued-year">
@@ -241,9 +241,6 @@
           <date-part name="year"/>
         </date>
       </if>
-      <else>
-        <text value="[s.d.]"/>
-      </else>
     </choose>
   </macro>
   <macro name="edition">
@@ -487,17 +484,17 @@
           <text macro="title"/>
           <text macro="container-contributors"/>
           <text macro="secondary-contributors"/>
-	  <text term="in" text-case="capitalize-first" prefix=" " suffix=": "/>
+          <text term="in" text-case="capitalize-first" prefix=" " suffix=": "/>
           <text macro="container-title"/>
           <text variable="edition" suffix="., "/>
           <text variable="issue" suffix=", "/>
           <text variable="publisher-place" suffix=". "/>
-	  <choose>
+          <choose>
             <if locale="pt-BR pt pt-PT">
-             <text value="Anais" font-weight="bold"/>
+              <text value="Anais" font-weight="bold"/>
             </if>
             <else>
-            <text value="Proceedings" font-weight="bold"/>
+              <text value="Proceedings" font-weight="bold"/>
             </else>
           </choose>
           <text value="..."/>
