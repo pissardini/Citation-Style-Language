@@ -141,9 +141,12 @@
       <if type="chapter bill" match="any">
         <text variable="title"/>
       </if>
-      <else-if type="book thesis" match="any">
-        <text variable="title" font-weight="bold"/>
-      </else-if>
+<else-if type="book thesis" match="any">
+  <group delimiter=": ">
+    <text variable="title" font-weight="bold" split=":"/>
+    <text variable="title" split=":"/>
+  </group>
+</else-if>
       <else-if type="article-journal" match="any">
         <text variable="title" text-case="title" font-weight="normal"/>
       </else-if>
@@ -153,10 +156,12 @@
       <else-if type="paper-conference" match="any">
         <text variable="title" suffix=". "/>
       </else-if>
-      <else>
-        <text variable="title" font-weight="bold"/>
-      </else>
-    </choose>
+<else>
+  <group delimiter=": ">
+    <text variable="title" font-weight="bold" split=":"/>
+    <text variable="title" split=":"/>
+  </group>
+</else>    </choose>
   </macro>
   <macro name="container-title">
     <choose>
@@ -397,18 +402,18 @@
             <text macro="locators" suffix=". "/>
           </group>
         </else-if>
-        <else-if type="article-newspaper article-magazine article-journal" match="any">
-          <group>
-            <text macro="author" suffix=". "/>
-            <text macro="title" suffix=". "/>
-            <text macro="container-title" suffix=", "/>
-            <text variable="collection-title" suffix=". "/>
-            <text macro="edition" suffix=", "/>
-            <text macro="locators" suffix=", "/>
-            <text macro="issued"/>
-            <text macro="access"/>
-          </group>
-        </else-if>
+<else-if type="article-newspaper article-magazine article-journal" match="any">
+  <group delimiter=". ">
+    <text macro="author"/>
+    <text macro="title"/>
+    <group delimiter=", ">
+      <text macro="container-title"/>
+      <text macro="locators"/>
+      <text macro="issued"/>
+    </group>
+    <text macro="access"/>
+  </group>
+</else-if>
         <else-if type="thesis">
           <group>
             <text macro="author" suffix=". "/>
