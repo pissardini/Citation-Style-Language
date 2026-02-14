@@ -5,7 +5,7 @@
     <title-short>ABNT-EP</title-short>
     <id>http://csl.mendeley.com/styles/20724431/abnt-ep</id>
     <author>
-      <name>Rodrigo de Sousa Pissardini</name>
+      <name>Rodrigo Pissardini</name>
       <email>pissardini AT usp DOT br</email>
     </author>
     <category citation-format="author-date"/>
