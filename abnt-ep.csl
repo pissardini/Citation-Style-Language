@@ -11,7 +11,7 @@
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2026-03-14T19:23:53+00:00</updated>
+    <updated>2026-03-14T19:33:38+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
@@ -314,7 +314,6 @@
       </else-if>
       <else-if type="chapter" match="any">
         <group delimiter=", ">
-          <text variable="volume" prefix="v. "/>
           <text variable="page" prefix="p. "/>
         </group>
       </else-if>
@@ -405,15 +404,13 @@
           <group>
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
-            <text macro="secondary-contributors" suffix=". "/>
             <text value="In" suffix=": "/>
             <text macro="container-contributors" suffix=" "/>
             <text macro="container-title" suffix=". "/>
-            <text variable="collection-title" suffix=". "/>
-            <text macro="translator" suffix=". "/>
+            <text variable="volume" prefix="v. " suffix=". "/>
             <text macro="edition" suffix=". "/>
-            <text macro="publisher"/>
-            <text macro="locators" prefix=" " suffix=". "/>
+            <text macro="publisher" suffix=" "/>
+            <text macro="locators" suffix=". "/>
           </group>
         </else-if>
         <else-if type="article-newspaper article-magazine article-journal" match="any">
