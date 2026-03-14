@@ -11,7 +11,7 @@
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2026-03-14T19:33:38+00:00</updated>
+    <updated>2026-03-14T20:10:05+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
@@ -138,16 +138,14 @@
   <macro name="access">
     <choose>
       <if type="webpage" match="any">
-        <choose>
-          <if variable="URL">
-            <text variable="URL" prefix="Disponível em: &lt;" suffix="&gt;."/>
-            <date variable="accessed" prefix=" Acesso em: " suffix=".">
-              <date-part name="day" suffix=" "/>
-              <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
-              <date-part name="year"/>
-            </date>
-          </if>
-        </choose>
+        <if variable="URL">
+          <text variable="URL" prefix="Disponível em: " suffix=". "/>
+          <date variable="accessed" prefix="Acesso em: " suffix=".">
+            <date-part name="day" suffix=" "/>
+            <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
+            <date-part name="year"/>
+          </date>
+        </if>
       </if>
     </choose>
   </macro>
@@ -451,8 +449,8 @@
           <group>
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
-            <text macro="genre" suffix=". "/>
-            <text macro="access" suffix=". "/>
+            <text macro="publisher" suffix=" "/>
+            <text macro="access"/>
           </group>
         </else-if>
         <else-if type="report">
