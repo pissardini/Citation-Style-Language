@@ -11,7 +11,7 @@
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2026-03-14T20:10:05+00:00</updated>
+    <updated>2026-03-14T20:22:11+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
@@ -110,7 +110,7 @@
       <substitute>
         <names variable="editor"/>
         <names variable="translator"/>
-        <text macro="title" text-case="uppercase"/>
+        <text variable="title" text-case="uppercase"/>
       </substitute>
     </names>
   </macro>
@@ -154,11 +154,8 @@
       <if type="chapter bill" match="any">
         <text variable="title"/>
       </if>
-      <else-if type="book thesis" match="any">
-        <group delimiter=": ">
-          <text variable="title" font-weight="bold" split=":"/>
-          <text variable="title" split=":"/>
-        </group>
+      <else-if type="book thesis report webpage" match="any">
+        <text variable="title" font-weight="bold"/>
       </else-if>
       <else-if type="article-journal" match="any">
         <text variable="title" text-case="title" font-weight="normal"/>
@@ -167,13 +164,10 @@
         <text variable="title" text-case="capitalize-first"/>
       </else-if>
       <else-if type="paper-conference" match="any">
-        <text variable="title" suffix=". "/>
+        <text variable="title"/>
       </else-if>
       <else>
-        <group delimiter=": ">
-          <text variable="title" font-weight="bold" split=":"/>
-          <text variable="title" split=":"/>
-        </group>
+        <text variable="title" font-weight="bold"/>
       </else>
     </choose>
   </macro>
@@ -406,7 +400,6 @@
             <text macro="container-contributors" suffix=" "/>
             <text macro="container-title" suffix=". "/>
             <text variable="volume" prefix="v. " suffix=". "/>
-            <text macro="edition" suffix=". "/>
             <text macro="publisher" suffix=" "/>
             <text macro="locators" suffix=". "/>
           </group>
