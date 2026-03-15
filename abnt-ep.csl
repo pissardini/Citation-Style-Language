@@ -11,7 +11,7 @@
     </author>
     <category citation-format="author-date"/>
     <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
-    <updated>2026-03-15T13:35:15+00:00</updated>
+    <updated>2026-03-15T20:19:23+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
@@ -451,10 +451,16 @@
           <group>
             <text macro="author" suffix=". "/>
             <text macro="title" suffix=". "/>
-            <text macro="issued-year"/>
-            <text macro="locators"/>
-            <text variable="publisher" prefix=" " suffix=","/>
-            <text variable="publisher-place" prefix=" "/>
+            <date variable="issued" suffix=". ">
+              <date-part name="year"/>
+            </date>
+            <text variable="number-of-pages" suffix=" f. "/>
+            <text variable="genre" suffix=" – "/>
+            <text variable="publisher" suffix=", "/>
+            <text variable="publisher-place" suffix=", "/>
+            <date variable="issued" suffix=".">
+              <date-part name="year"/>
+            </date>
             <text macro="access"/>
           </group>
         </else-if>
