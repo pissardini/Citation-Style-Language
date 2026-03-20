@@ -70,38 +70,64 @@
       </if>
     </choose>
   </macro>
-  <macro name="container-contributors">
-    <choose>
-      <if type="chapter">
-        <choose>
-          <if variable="editor">
-            <group>
-              <names variable="editor" delimiter="; ">
-                <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="always"/>
-              </names>
-              <text value=" (org.)."/>
-            </group>
-          </if>
-          <else-if variable="container-author">
-            <group>
-              <names variable="container-author" delimiter="; ">
-                <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="always"/>
-              </names>
-              <text value=" (org.)."/>
-            </group>
-          </else-if>
-          <else-if variable="collection-editor">
-            <group>
-              <names variable="collection-editor" delimiter="; ">
-                <name name-as-sort-order="all" sort-separator=", " initialize-with=". " delimiter="; " delimiter-precedes-last="always"/>
-              </names>
-              <text value=" (org.)."/>
-            </group>
-          </else-if>
-        </choose>
-      </if>
-    </choose>
-  </macro>
+  
+<macro name="container-contributors">
+  <choose>
+    <if type="chapter">
+      <choose>
+        <if variable="editor">
+          <group>
+            <names variable="editor" delimiter="; ">
+              <name
+                delimiter="; "
+                delimiter-precedes-last="always"
+                initialize-with=". "
+                name-as-sort-order="all"
+                sort-separator=", ">
+                <name-part name="family" text-case="uppercase"/>
+                <name-part name="given"/>
+              </name>
+            </names>
+            <text value=" (org.)."/>
+          </group>
+        </if>
+        <else-if variable="container-author">
+          <group>
+            <names variable="container-author" delimiter="; ">
+              <name
+                delimiter="; "
+                delimiter-precedes-last="always"
+                initialize-with=". "
+                name-as-sort-order="all"
+                sort-separator=", ">
+                <name-part name="family" text-case="uppercase"/>
+                <name-part name="given"/>
+              </name>
+            </names>
+            <text value=" (org.)."/>
+          </group>
+        </else-if>
+        <else-if variable="collection-editor">
+          <group>
+            <names variable="collection-editor" delimiter="; ">
+              <name
+                delimiter="; "
+                delimiter-precedes-last="always"
+                initialize-with=". "
+                name-as-sort-order="all"
+                sort-separator=", ">
+                <name-part name="family" text-case="uppercase"/>
+                <name-part name="given"/>
+              </name>
+            </names>
+            <text value=" (org.)."/>
+          </group>
+        </else-if>
+      </choose>
+    </if>
+  </choose>
+</macro>
+
   <macro name="secondary-contributors">
     <choose>
       <if type="chapter" match="none">
