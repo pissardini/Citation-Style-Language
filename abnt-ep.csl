@@ -188,20 +188,18 @@
       </substitute>
     </names>
   </macro>
-  <macro name="access">
-    <choose>
-      <if type="webpage" match="any">
-        <if variable="URL">
-          <text variable="URL" prefix="Disponível em: " suffix=". "/>
-          <date variable="accessed" prefix="Acesso em: " suffix=".">
-            <date-part name="day" suffix=" "/>
-            <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
-            <date-part name="year"/>
-          </date>
-        </if>
-      </if>
-    </choose>
-  </macro>
+ <macro name="access">
+  <choose>
+    <if variable="URL">
+      <text variable="URL" prefix="Disponível em: " suffix=". "/>
+      <date variable="accessed" prefix="Acesso em: " suffix=".">
+        <date-part name="day" suffix=" "/>
+        <date-part name="month" form="short" suffix=" " text-case="lowercase"/>
+        <date-part name="year"/>
+      </date>
+    </if>
+  </choose>
+</macro>
   <macro name="title">
     <choose>
       <if type="chapter bill" match="any">
@@ -531,17 +529,17 @@
     <text macro="access"/>
   </group>
 </else-if>
-        <else-if type="report">
-          <group>
-            <text macro="author" suffix=". "/>
-            <text macro="title" suffix=". "/>
-            <text macro="translator" suffix=". "/>
-            <text macro="edition" suffix=". "/>
-            <text macro="publisher"/>
-            <text macro="locators"/>
-            <text macro="access"/>
-          </group>
-        </else-if>
+       <else-if type="report">
+  <group>
+    <text macro="author" suffix=". "/>
+    <text macro="title" suffix=". "/>
+    <text macro="translator" suffix=". "/>
+    <text macro="edition" suffix=". "/>
+    <text macro="publisher" suffix=" "/>
+    <text macro="locators" suffix=". "/>
+    <text macro="access"/>
+  </group>
+</else-if>
         <else-if type="entry-dictionary">
           <group>
             <text macro="author" suffix=". "/>
