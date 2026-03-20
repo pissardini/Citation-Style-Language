@@ -10,13 +10,13 @@
       <email>pissardini AT usp DOT br</email>
     </author>
     <category citation-format="author-date"/>
-    <summary>The Brazilian Standard Style in accordance with ABNT-NBR 10520.2002, ABNT-NBR 6023.2002 and Diretrizes para Apresentação de Dissertações e Teses USP (ABNT)(2016)</summary>
+<summary>The Brazilian Standard Style in accordance with ABNT NBR 10520 and ABNT NBR 6023:2018, adapted to USP guidelines.</summary>
     <updated>2026-03-15T20:19:23+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="pt-BR">
     <terms>
-      <term name="in">In</term>
+      <term name="in">In:</term>
       <term name="month-01" form="short">jan.</term>
       <term name="month-02" form="short">fev.</term>
       <term name="month-03" form="short">mar.</term>
@@ -281,25 +281,15 @@
       </if>
     </choose>
   </macro>
-  <macro name="issued">
-    <choose>
-      <if variable="issued" match="any">
-        <group>
-          <choose>
-            <if type="book chapter" match="none">
-              <date variable="issued">
-                <date-part name="day" suffix=" "/>
-                <date-part name="month" form="short" suffix=" "/>
-              </date>
-            </if>
-          </choose>
-          <date variable="issued" suffix=". ">
-            <date-part name="year"/>
-          </date>
-        </group>
-      </if>
-    </choose>
-  </macro>
+<macro name="issued">
+  <choose>
+    <if variable="issued">
+      <date variable="issued" suffix=". ">
+        <date-part name="year"/>
+      </date>
+    </if>
+  </choose>
+</macro>
   <macro name="issued-year">
     <choose>
       <if variable="issued" match="all">
@@ -501,14 +491,46 @@
             <text macro="archive" suffix=". "/>
           </group>
         </else-if>
-        <else-if type="webpage">
-          <group>
-            <text macro="author" suffix=". "/>
-            <text macro="title" suffix=". "/>
-            <text macro="publisher" suffix=" "/>
-            <text macro="access"/>
-          </group>
-        </else-if>
+
+<else-if type="webpage">
+  <group>
+    <text macro="author" suffix=". "/>
+    <text macro="title" suffix=". "/>
+    <choose>
+      <if variable="publisher publisher-place issued">
+        <group>
+          <text variable="publisher-place" suffix=": "/>
+          <text variable="publisher" suffix=", "/>
+          <date variable="issued" suffix=". ">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </if>
+      <else-if variable="publisher issued">
+        <group>
+          <text variable="publisher" suffix=", "/>
+          <date variable="issued" suffix=". ">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </else-if>
+      <else-if variable="publisher-place issued">
+        <group>
+          <text variable="publisher-place" suffix=", "/>
+          <date variable="issued" suffix=". ">
+            <date-part name="year"/>
+          </date>
+        </group>
+      </else-if>
+      <else-if variable="issued">
+        <date variable="issued" suffix=". ">
+          <date-part name="year"/>
+        </date>
+      </else-if>
+    </choose>
+    <text macro="access"/>
+  </group>
+</else-if>
         <else-if type="report">
           <group>
             <text macro="author" suffix=". "/>
